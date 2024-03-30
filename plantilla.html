@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple React Website with Babel</title>
+
+    <style>
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 200px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50
+}
+
+.profile-info {
+    text-align: center;
+}
+
+.content-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.backgroundContent {
+    background-image: url('https://wallpapers-clan.com/wp-content/uploads/2023/11/one-piece-world-map-desktop-wallpaper-preview.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+}
+
+.backgroundCard {
+    background-color: rgb(246, 237, 174);
+    padding: 1%;
+    border-radius: 45px;
+    margin: 2%;
+}
+
+.card {
+  width: 200px;
+  height: 200px;
+  opacity: 0.4;
+  transition: opacity 0.6s ease;
+}
+
+.card-image {
+  height: 100px;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-image img {
+    width: 50%; 
+    height: 100%;
+    border-radius: 50%; /* Hace que la imagen sea circular */
+}
+
+h3 {
+  margin-top: 10px;
+}
+
+.card:hover, .hovered {
+  opacity: 1;
+}
+
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- Babel CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <!-- React CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+
+    <script type="text/babel"></script>
+
+    <script src = "header.js" type="text/babel"></script>
+    <script src = "content.js" type="text/babel"></script>
+    <script src = "card.js" type="text/babel"></script>
+    <script src = "app.js" type="text/babel"></script>
+</body>
+</html>
