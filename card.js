@@ -5,20 +5,27 @@ class Card extends React.Component {
       hover: false
     };
     this.handleHover = this.handleHover.bind(this);
+    this.handleCardClick = this.handleCardClick.bind(this); // Este método maneja el clic en la tarjeta
   }
+
   handleHover(isHovering) {
     this.setState({ hover: isHovering });
     this.props.onHover(this.props.id, isHovering);
+  }
+
+  handleCardClick() {
+    window.location.href = 'characterID.html'; // Redirige al usuario al otro HTML
   }
 
   render() {
     const opacity = this.props.hovered || this.state.hover ? 1 : 0.4;
     return (
       <div
-      className={`card backgroundCard box ${this.props.hovered ? "hovered" : ""}`}
-      onMouseEnter={() => this.handleHover(true)}
-      onMouseLeave={() => this.handleHover(false)}
-      style={{ opacity: opacity }}
+        className={`card backgroundCard box ${this.props.hovered ? "hovered" : ""}`}
+        onMouseEnter={() => this.handleHover(true)}
+        onMouseLeave={() => this.handleHover(false)}
+        onClick={this.handleCardClick} // Este es el evento de clic en la tarjeta
+        style={{ opacity: opacity }}
       >
         <div className="card-image">
           <img src={this.props.imageUrl} alt={this.props.name}/>
@@ -31,6 +38,7 @@ class Card extends React.Component {
     );
   }
 }
+
   
 const Window = {};
 Window.Card = Card; // Exporta el componente Card para que pueda ser utilizado en otros archivos
@@ -75,6 +83,3 @@ Window.Card = Card; // Exporta el componente Card para que pueda ser utilizado e
   }
   
   Window.CardList = CardList;
-
-
-
