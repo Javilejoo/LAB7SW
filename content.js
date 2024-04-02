@@ -10,7 +10,7 @@ class Content extends React.Component {
     try {
       const response = await fetch('http://127.0.0.1:3010/posts');
       const responseData = await response.json();
-      console.log('Fetched data:', responseData); // Log the entire response object
+      console.log('Fetched data:', responseData);
       if (responseData.status === 200 && Array.isArray(responseData.data)) {
         this.setState({ cards: responseData.data });
       } else {
@@ -21,6 +21,10 @@ class Content extends React.Component {
     }
   }
 
+  handleHover = (cardId, isHovering) => {
+    
+  }
+
   render() {
     return (
       <div className="backgroundContent">
@@ -28,8 +32,10 @@ class Content extends React.Component {
           {this.state.cards.map(cardData => (
             <Card
               key={cardData.id}
+              id={cardData.id}
               name={cardData.name}
               imageUrl={cardData.imageUrl}
+              onHover={this.handleHover} 
             />
           ))}
         </div>
@@ -38,4 +44,4 @@ class Content extends React.Component {
   }
 }
 
-window.Content = Content;
+Window.Content = Content;
