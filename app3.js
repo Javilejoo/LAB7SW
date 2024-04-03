@@ -41,7 +41,7 @@ class App extends React.Component {
       });
       const character = await response.json();
       console.log("Personaje creado:", character);
-      // Agregar lógica adicional después de crear el personaje, como redirigir a otra página
+      window.location.href = 'plantilla.html';
     } catch (error) {
       console.error("Error al crear el personaje:", error);
     }
@@ -95,8 +95,8 @@ class App extends React.Component {
             <button type="submit">Guardar Personaje</button>
           </form>
           <div className="columns">
-            {/* Aquí colocarías las columnas con los nombres de las propiedades del personaje */}
-            {/* Agrega más columnas según sea necesario */}
+            {}
+            {}
           </div>
         </div>
       </div>

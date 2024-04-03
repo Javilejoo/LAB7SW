@@ -27,6 +27,43 @@ class App2 extends React.Component {
     }
   }
 
+  handleDelete = async () => {
+    const { character } = this.state;
+    if (!character) {
+      return;
+    }
+
+    try {
+      // Realizar una solicitud para eliminar el personaje por su ID
+      const response = await fetch(`http://127.0.0.1:3010/posts/${character.id}`, {
+        method: 'DELETE'
+      });
+      if (response.ok) {
+        console.log('Personaje eliminado con éxito');
+        // Redirigir a plantilla.html después de eliminar el personaje
+        window.location.href = 'plantilla.html';
+      } else {
+        console.error('Error al eliminar el personaje:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error al eliminar el personaje:', error);
+    }
+}
+
+handleUpdate = () => {
+  const { character } = this.state;
+  if (!character) {
+    return;
+  }
+
+  // Obtener el ID del personaje
+  const characterId = character.id;
+
+  // Redireccionar a la página de actualización con el ID del personaje
+  window.location.href = `actualizar-personaje.html?id=${characterId}`;
+}
+
+
   render() {
     const { character, loading } = this.state;
 
@@ -49,11 +86,11 @@ class App2 extends React.Component {
           <p>Bounty: {character.bounty}</p>
           <p>Devil Fruit: {character.devilFruit}</p>
           <p>Description: {character.description}</p>
-          {}
+          <button onClick={this.handleDelete}>Eliminar</button>
+          <button onClick={this.handleUpdate}>Actualizar</button>
         </div>
       </div>
     );
-    
   }
 }
 
