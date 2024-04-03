@@ -3,6 +3,7 @@ class Content extends React.Component {
     super(props);
     this.state = {
       cards: [],
+      loading: true
     };
   }
 
@@ -12,12 +13,13 @@ class Content extends React.Component {
       const responseData = await response.json();
       console.log('Fetched data:', responseData);
       if (responseData.status === 200 && Array.isArray(responseData.data)) {
-        this.setState({ cards: responseData.data });
+        this.setState({ cards: responseData.data, loading: false });
       } else {
         console.error('Invalid response format:', responseData);
       }
     } catch (error) {
       console.error('Error fetching data:', error);
+      this.setState({ loading: false });
     }
   }
 
@@ -26,6 +28,13 @@ class Content extends React.Component {
   }
 
   render() {
+    const { cards, loading } = this.state;
+    if (loading) {
+      return <h1>Loading...</h1>;
+    }
+    if(cards.length === 0) {
+      return <h1>Luffy esta de vacaciones</h1>;
+    }
     return (
       <div className="backgroundContent">
         <div className="content-box"> 

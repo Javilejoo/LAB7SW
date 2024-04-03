@@ -14,14 +14,18 @@ class App2 extends React.Component {
   
     // Hacer la solicitud para obtener la información del personaje
     try {
+      loading: true
       const response = await fetch(`http://127.0.0.1:3010/posts/${characterId}`);
       if (!response.ok) {
+        
         throw new Error('Failed to fetch character data');
       }
+      
       const characterData = await response.json();
       console.log('Fetched character data:', characterData);
       this.setState({ character: characterData.data[0], loading: false });
     } catch (error) {
+      
       console.error('Error fetching character data:', error);
       this.setState({ loading: false });
     }
